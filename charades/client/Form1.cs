@@ -55,7 +55,8 @@ namespace client
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+        private void scribleGrid_Paint(object sender, PaintEventArgs e)
         {
 
         }

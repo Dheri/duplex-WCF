@@ -14,11 +14,14 @@ namespace server
     {
         [OperationContract(IsOneWay = true)]
         void DoWork();
+
+        [OperationContract(IsOneWay = true)]
+        void Send(Message msg);
     }
 
     public interface ICommsServiceDuplexCallback
     {
         [OperationContract(IsOneWay = true)]
-        void sendMessage();
+        void Receive( Message msg);
     }
 }

@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace client.CommsServiceReference {
+namespace client.SVRf {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CommsServiceReference.ICommsService", CallbackContract=typeof(client.CommsServiceReference.ICommsServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SVRf.ICommsService", CallbackContract=typeof(client.SVRf.ICommsServiceCallback), SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface ICommsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/DoWork")]
@@ -20,6 +20,12 @@ namespace client.CommsServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/DoWork")]
         System.Threading.Tasks.Task DoWorkAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/Send")]
+        void Send();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/Send")]
+        System.Threading.Tasks.Task SendAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -30,12 +36,12 @@ namespace client.CommsServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICommsServiceChannel : client.CommsServiceReference.ICommsService, System.ServiceModel.IClientChannel {
+    public interface ICommsServiceChannel : client.SVRf.ICommsService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CommsServiceClient : System.ServiceModel.DuplexClientBase<client.CommsServiceReference.ICommsService>, client.CommsServiceReference.ICommsService {
+    public partial class CommsServiceClient : System.ServiceModel.DuplexClientBase<client.SVRf.ICommsService>, client.SVRf.ICommsService {
         
         public CommsServiceClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -63,6 +69,14 @@ namespace client.CommsServiceReference {
         
         public System.Threading.Tasks.Task DoWorkAsync() {
             return base.Channel.DoWorkAsync();
+        }
+        
+        public void Send() {
+            base.Channel.Send();
+        }
+        
+        public System.Threading.Tasks.Task SendAsync() {
+            return base.Channel.SendAsync();
         }
     }
 }
