@@ -17,11 +17,16 @@ namespace ServiceAssembly
 
         [OperationContract(IsOneWay = true)]
         void Send(Message msg);
+
+        [OperationContract(IsInitiating = true)]
+        bool Connect(Client c);
     }
 
     public interface ICommsServiceDuplexCallback
     {
         [OperationContract(IsOneWay = true)]
         void Receive( Message msg);
+        void RefreshClients(List<Client> clientList);
+        void UserJoin(Client client);
     }
 }

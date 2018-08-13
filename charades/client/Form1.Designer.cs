@@ -89,7 +89,7 @@
             this.scribleGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.scribleGrid.Size = new System.Drawing.Size(470, 269);
             this.scribleGrid.TabIndex = 0;
-            this.scribleGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.scribleGrid_Paint);
+           // this.scribleGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.scribleGrid_Paint);
             // 
             // rtbMessages
             // 

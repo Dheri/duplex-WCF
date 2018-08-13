@@ -30,19 +30,35 @@ namespace client
             serviceClient = new SVC.CommsServiceClient(instanceContext);
             client = new SVC.Client();
             client.Name = Program.clientName;
+
+            if (serviceClient.Connect(client))
+            {
+                //good
+                Console.WriteLine("Connected");
+            }
+            else
+            {
+                //bad
+                Console.WriteLine("Not Connected");
+            }
+
+
             textBoxes = new TextBox[10, 10];
 
         }
         private TextBox createTextBox()
         {
-            TextBox tb = new TextBox();
-            tb.MaxLength = 1;
-            tb.Cursor = System.Windows.Forms.Cursors.Cross;
-            tb.Anchor = AnchorStyles.Top;
+            TextBox tb = new TextBox
+            {
+                MaxLength = 1,
+                Cursor = System.Windows.Forms.Cursors.Cross,
+                Anchor = AnchorStyles.Top,
+                Dock = DockStyle.Fill,
+            };
             tb.Anchor = AnchorStyles.Right;
             tb.Anchor = AnchorStyles.Bottom;
             tb.Anchor = AnchorStyles.Left;
-            tb.Dock = DockStyle.Fill;
+
             return tb;
         }
 
@@ -54,9 +70,10 @@ namespace client
             serviceClient.Send(m);
         }
 
-        public   void UpdateMesageList(SVC.Message m)
+        public void UpdateMesageList(SVC.Message m)
         {
-            rtbMessages.Text += Environment.NewLine + m.Sender + ": " + m.Content;
+            rtbMessages.Text = rtbMessages.Text + Environment.NewLine + " a";
+            rtbMessages.Text = rtbMessages.Text + Environment.NewLine + m.Sender + ": " + m.Content;
         }
 
         #endregion
@@ -107,6 +124,7 @@ namespace client
         private void btnSendMsg_Click(object sender, EventArgs e)
         {
             sendMessage();
+            tbmessageSend.Clear();
         }
 
 

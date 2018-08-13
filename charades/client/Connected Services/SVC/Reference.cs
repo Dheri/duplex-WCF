@@ -150,6 +150,12 @@ namespace client.SVC {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/Send")]
         System.Threading.Tasks.Task SendAsync(client.SVC.Message msg);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommsService/Connect", ReplyAction="http://tempuri.org/ICommsService/ConnectResponse")]
+        bool Connect(client.SVC.Client c);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommsService/Connect", ReplyAction="http://tempuri.org/ICommsService/ConnectResponse")]
+        System.Threading.Tasks.Task<bool> ConnectAsync(client.SVC.Client c);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -201,6 +207,14 @@ namespace client.SVC {
         
         public System.Threading.Tasks.Task SendAsync(client.SVC.Message msg) {
             return base.Channel.SendAsync(msg);
+        }
+        
+        public bool Connect(client.SVC.Client c) {
+            return base.Channel.Connect(c);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ConnectAsync(client.SVC.Client c) {
+            return base.Channel.ConnectAsync(c);
         }
     }
 }

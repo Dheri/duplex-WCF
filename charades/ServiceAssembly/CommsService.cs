@@ -15,6 +15,8 @@ namespace ServiceAssembly
     {
         Dictionary<Client, ICommsServiceDuplexCallback> clients =
              new Dictionary<Client, ICommsServiceDuplexCallback>();
+        List<Client> clientList = new List<Client>();
+
         object syncObj = new object();
 
 
@@ -47,15 +49,55 @@ namespace ServiceAssembly
         public void Send(Message message)
         {
             //update game
-
+            Console.WriteLine(message.Sender + ": " + message.Content);
             //update clients
             lock (syncObj)
             {
-                foreach (ICommsServiceDuplexCallback callback in clients.Values)
+                try
                 {
-                    callback.Receive(message);
+
+                    foreach (ICommsServiceDuplexCallback callback in clients.Values)
+                    {
+                        callback.Receive(message);
+                    }
+                }
+                catch (Exception e)
+                {
+                    //lol
                 }
             }
         }
+
+        public bool Connect(Client client)
+        {
+            if (!clients.ContainsValue(CurrentCallback) && !SearchClientsByName(client.Name))
+            {
+                lock (syncObj)
+                {
+                    clients.Add(client, CurrentCallback);
+                    clientList.Add(client);
+
+                    foreach (Client key in clients.Keys)
+                    {
+                        ICommsServiceDuplexCallback callback = clients[key];
+                        try
+                        {
+                            // callback.RefreshClients(clientList);
+                            //callback.UserJoin(client);
+                        }
+                        catch
+                        {
+                            //clients.Remove(key);
+                            return false;
+                        }
+
+                    }
+
+                }
+                return true;
+            }
+            return false;
+        }
+
     }
 }
