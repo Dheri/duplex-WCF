@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\SVRf\Reference.cs">
+    <Compile Include="Connected Services\SVC\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -61,7 +61,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="CommsServiceDuplexCallback.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,8 +84,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\SVRf\CommsService.wsdl" />
-    <None Include="Connected Services\SVRf\item.xsd">
+    <None Include="Connected Services\SVC\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SVC\service.wsdl" />
+    <None Include="Connected Services\SVC\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SVC\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SVC\ServiceAssembly.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -106,16 +114,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\SVRf\" />
+    <WCFMetadataStorage Include="Connected Services\SVC\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SVRf\configuration91.svcinfo" />
+    <None Include="Connected Services\SVC\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SVRf\configuration.svcinfo" />
+    <None Include="Connected Services\SVC\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SVRf\Reference.svcmap">
+    <None Include="Connected Services\SVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

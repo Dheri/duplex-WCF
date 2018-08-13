@@ -13,14 +13,41 @@ namespace client
 {
     public partial class Form1 : Form
     {
-        CommsServiceReference.CommsServiceClient serviceClient;
+        SVC.CommsServiceClient serviceClient;
+
+
+        SVC.Message msg = new SVC.Message();
+
+
         InstanceContext instanceContext;
         TextBox[,] textBoxes;
 
+        #region MyMethods
+        private TextBox createTextBox()
+        {
+            TextBox tb = new TextBox();
+            tb.MaxLength = 1;
+            tb.Cursor = System.Windows.Forms.Cursors.Cross;
+            tb.Anchor = AnchorStyles.Top;
+            tb.Anchor = AnchorStyles.Right;
+            tb.Anchor = AnchorStyles.Bottom;
+            tb.Anchor = AnchorStyles.Left;
+            tb.Dock = DockStyle.Fill;
+            return tb;
+        }
+
+        public void sendMessage()
+        {
+
+        }
+
+        #endregion
+
+
         public Form1()
         {
-            instanceContext = new InstanceContext(new CommsServiceDuplexCallback());
-            serviceClient = new CommsServiceReference.CommsServiceClient(instanceContext);
+            instanceContext = new InstanceContext(new CallBackImlementation());
+            serviceClient = new SVC.CommsServiceClient(instanceContext);
             textBoxes = new TextBox[10, 10];
 
             InitializeComponent();
@@ -37,19 +64,8 @@ namespace client
             }
         }
 
-        private TextBox createTextBox()
-        {
-            TextBox tb = new TextBox();
-            tb.MaxLength = 1;
-            tb.Cursor = System.Windows.Forms.Cursors.Cross;
-            tb.Anchor = AnchorStyles.Top;
-            tb.Anchor = AnchorStyles.Right;
-            tb.Anchor = AnchorStyles.Bottom;
-            tb.Anchor = AnchorStyles.Left;
-            tb.Dock = DockStyle.Fill;
-            return tb;
-        }
 
+        #region UI_Events
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -60,5 +76,23 @@ namespace client
         {
 
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSendMsg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        #endregion
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using client.SVC;
 
 namespace client
 {
@@ -19,5 +20,15 @@ namespace client
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
         }
+    }
+    public class CallBackImlementation : SVC.ICommsServiceCallback
+    {
+
+        public void Receive(SVC.Message msg)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

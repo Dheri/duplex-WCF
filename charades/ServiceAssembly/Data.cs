@@ -11,6 +11,18 @@ namespace ServiceAssembly
     {
     }
 
+
+    [DataContract]
+    public class Client
+    {
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public int Score { get; set; }
+
+    }
+
     [DataContract]
     public class Message
     {
@@ -24,11 +36,4 @@ namespace ServiceAssembly
     }
 
 
-    [DataContract]
-    public class Client
-    {
-        [DataMember]
-        public string Name { get; set; }
-
-    }
 }
