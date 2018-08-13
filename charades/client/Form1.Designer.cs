@@ -96,9 +96,11 @@
             this.rtbMessages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbMessages.Location = new System.Drawing.Point(0, 0);
             this.rtbMessages.Name = "rtbMessages";
+            this.rtbMessages.ReadOnly = true;
             this.rtbMessages.Size = new System.Drawing.Size(253, 231);
             this.rtbMessages.TabIndex = 1;
             this.rtbMessages.Text = "";
+            this.rtbMessages.TextChanged += new System.EventHandler(this.rtbMessages_TextChanged);
             // 
             // splitContainer1
             // 
@@ -122,14 +124,14 @@
             // 
             // tbmessageSend
             // 
-            this.tbmessageSend.Location = new System.Drawing.Point(0, 3);
+            this.tbmessageSend.Location = new System.Drawing.Point(0, 10);
             this.tbmessageSend.Name = "tbmessageSend";
             this.tbmessageSend.Size = new System.Drawing.Size(169, 20);
             this.tbmessageSend.TabIndex = 0;
             // 
             // btnSendMsg
             // 
-            this.btnSendMsg.Location = new System.Drawing.Point(175, 3);
+            this.btnSendMsg.Location = new System.Drawing.Point(175, 8);
             this.btnSendMsg.Name = "btnSendMsg";
             this.btnSendMsg.Size = new System.Drawing.Size(75, 23);
             this.btnSendMsg.TabIndex = 1;

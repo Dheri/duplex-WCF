@@ -13,7 +13,7 @@ namespace ServiceAssembly
     public interface ICommsService
     {
         [OperationContract(IsOneWay = true)]
-        void DoWork();
+        void DoWork( Client c);
 
         [OperationContract(IsOneWay = true)]
         void Send(Message msg);

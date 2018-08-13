@@ -84,9 +84,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\SVC\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\SVC\service.wsdl" />
     <None Include="Connected Services\SVC\service.xsd">
       <SubType>Designer</SubType>

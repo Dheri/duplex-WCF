@@ -9,24 +9,26 @@ namespace client
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        public static string clientName;
+        public static Login login;
+        public static Form1 form1;
+
         [STAThread]
         static void Main()
         {
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            login = new Login();
+            Application.Run(login);
         }
+
     }
     public class CallBackImlementation : SVC.ICommsServiceCallback
     {
 
         public void Receive(SVC.Message msg)
         {
-            throw new NotImplementedException();
+            Program.form1.UpdateMesageList(msg);
         }
 
 

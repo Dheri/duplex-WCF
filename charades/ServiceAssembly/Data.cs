@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace ServiceAssembly
 {
-    class Data
-    {
-    }
-
-
+    
     [DataContract]
     public class Client
     {
@@ -26,13 +22,15 @@ namespace ServiceAssembly
     [DataContract]
     public class Message
     {
-        private Dictionary<string, string> content = new Dictionary<string, string>();
+        public Dictionary<string, string> content = new Dictionary<string, string>();
 
         [DataMember]
         public string Sender { get; set; }
 
         [DataMember]
-        public Dictionary<string, string> Content { get; set; }
+        //public Dictionary<string, string> Content { get; set; }
+        public string Content { get; set; }
+
     }
 
 

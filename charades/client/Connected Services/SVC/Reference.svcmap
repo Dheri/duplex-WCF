@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5bfaac64-5b8c-43f9-8cd0-eaeaeeb388e3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
-    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -27,7 +28,6 @@
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="58a03705-eef0-441b-8295-de566cd16977" SourceId="1" SourceUrl="net.tcp://localhost:7996/WPFHost/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="133f04f4-5389-499b-a126-18e5ef57d362" SourceId="1" SourceUrl="net.tcp://localhost:7996/WPFHost/mex" />
     <MetadataFile FileName="ServiceAssembly.xsd" MetadataType="Schema" ID="d062519f-46f8-429f-8e2a-2366b53743bc" SourceId="1" SourceUrl="net.tcp://localhost:7996/WPFHost/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="2f12b95f-5860-4260-b17d-86e9176b1c3f" SourceId="1" SourceUrl="net.tcp://localhost:7996/WPFHost/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

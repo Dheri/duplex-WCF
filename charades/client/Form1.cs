@@ -8,21 +8,31 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using client.SVC;
 
 namespace client
 {
     public partial class Form1 : Form
     {
         SVC.CommsServiceClient serviceClient;
-
-
-        SVC.Message msg = new SVC.Message();
-
+        SVC.Client client;
+        SVC.Message message = new SVC.Message();
 
         InstanceContext instanceContext;
         TextBox[,] textBoxes;
 
         #region MyMethods
+
+
+        void InitializeXtraComponent()
+        {
+            instanceContext = new InstanceContext(new CallBackImlementation());
+            serviceClient = new SVC.CommsServiceClient(instanceContext);
+            client = new SVC.Client();
+            client.Name = Program.clientName;
+            textBoxes = new TextBox[10, 10];
+
+        }
         private TextBox createTextBox()
         {
             TextBox tb = new TextBox();
@@ -38,7 +48,15 @@ namespace client
 
         public void sendMessage()
         {
+            SVC.Message m = new SVC.Message();
+            m.Sender = client.Name;
+            m.Content = tbmessageSend.Text;
+            serviceClient.Send(m);
+        }
 
+        public   void UpdateMesageList(SVC.Message m)
+        {
+            rtbMessages.Text += Environment.NewLine + m.Sender + ": " + m.Content;
         }
 
         #endregion
@@ -46,11 +64,10 @@ namespace client
 
         public Form1()
         {
-            instanceContext = new InstanceContext(new CallBackImlementation());
-            serviceClient = new SVC.CommsServiceClient(instanceContext);
-            textBoxes = new TextBox[10, 10];
 
             InitializeComponent();
+            InitializeXtraComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,10 +106,14 @@ namespace client
 
         private void btnSendMsg_Click(object sender, EventArgs e)
         {
-
+            sendMessage();
         }
 
 
+        private void rtbMessages_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         #endregion
     }
 }

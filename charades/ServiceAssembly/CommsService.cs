@@ -1,5 +1,4 @@
-﻿using ServiceAssembly;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,8 +9,8 @@ namespace ServiceAssembly
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CommsService" in both code and config file together.
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
-    ConcurrencyMode = ConcurrencyMode.Multiple,
-    UseSynchronizationContext = false)]
+        ConcurrencyMode = ConcurrencyMode.Multiple,
+        UseSynchronizationContext = false)]
     public class CommsService : ICommsService
     {
         Dictionary<Client, ICommsServiceDuplexCallback> clients =
@@ -40,8 +39,9 @@ namespace ServiceAssembly
             }
             return false;
         }
-        public void DoWork()
+        public void DoWork(Client c)
         {
+            c.Name = "Parteek";
         }
 
         public void Send(Message message)
@@ -51,7 +51,6 @@ namespace ServiceAssembly
             //update clients
             lock (syncObj)
             {
-
                 foreach (ICommsServiceDuplexCallback callback in clients.Values)
                 {
                     callback.Receive(message);
