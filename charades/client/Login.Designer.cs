@@ -36,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbClientName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@
             this.groupBox1.Size = new System.Drawing.Size(323, 167);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Login";
             // 
             // btnConnect
             // 
@@ -113,17 +115,39 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(231, 322);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Status:";
+            // 
+            // lblStatus
+            // 
+    
+            this.lblStatus.Location = new System.Drawing.Point(343, 322);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(27, 13);
+            this.lblStatus.TabIndex = 2;
+            this.lblStatus.Text = "N/A";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Name = "Login";
             this.Text = "Login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -137,5 +161,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbClientName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

@@ -14,9 +14,9 @@ namespace client
 {
     public partial class Form1 : Form
     {
-        SVC.CommsServiceClient serviceClient;
-        SVC.Client client;
-        SVC.Message message = new SVC.Message();
+        //SVC.CommsServiceClient serviceClient;
+        //SVC.Client client;
+        //SVC.Message message = new SVC.Message();
 
         InstanceContext instanceContext;
         TextBox[,] textBoxes;
@@ -26,26 +26,9 @@ namespace client
 
         void InitializeXtraComponent()
         {
-            instanceContext = new InstanceContext(new CallBackImlementation());
-            serviceClient = new SVC.CommsServiceClient(instanceContext);
-            client = new SVC.Client();
-            client.Name = Program.clientName;
-
-            if (serviceClient.Connect(client))
-            {
-                //good
-                Console.WriteLine("Connected");
-            }
-            else
-            {
-                //bad
-                Console.WriteLine("Not Connected");
-            }
-
-
             textBoxes = new TextBox[10, 10];
-
         }
+
         private TextBox createTextBox()
         {
             TextBox tb = new TextBox
@@ -65,9 +48,9 @@ namespace client
         public void sendMessage()
         {
             SVC.Message m = new SVC.Message();
-            m.Sender = client.Name;
+            m.Sender = Program.Client.Name;
             m.Content = tbmessageSend.Text;
-            serviceClient.Send(m);
+            Program.serviceClient.Send(m);
         }
 
         public void UpdateMesageList(SVC.Message m)

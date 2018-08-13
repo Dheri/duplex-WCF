@@ -13,6 +13,13 @@ namespace client
         public static Login login;
         public static Form1 form1;
 
+
+        public static SVC.CommsServiceClient serviceClient;
+        public static SVC.Client Client;
+
+
+
+
         [STAThread]
         static void Main()
         {

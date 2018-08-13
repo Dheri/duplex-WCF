@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,10 +20,32 @@ namespace client
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            Program.clientName = tbClientName.Text;
-            Program.form1 = new Form1();
-            this.Hide();
-            Program.form1.Show();
+            makeConnection();
+        }
+
+        private void makeConnection()
+        {
+            InstanceContext instanceContext = new InstanceContext(new CallBackImlementation());
+            Program.serviceClient = new SVC.CommsServiceClient(instanceContext);
+            Program.Client  = new SVC.Client();
+
+            Program.Client.Name = tbClientName.Text;
+            if (Program.serviceClient.Connect(Program.Client))
+            {
+                //good
+                Console.WriteLine("Connected");
+                Program.form1 = new Form1();
+                this.Hide();
+                Program.form1.Show();
+            }
+            else
+            {
+                //bad
+                Console.WriteLine("Not Connected");
+                lblStatus.Text = "Not Connected";
+                lblStatus.ForeColor = Color.Red;
+            }
+
         }
     }
 }
