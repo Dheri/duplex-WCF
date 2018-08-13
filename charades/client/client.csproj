@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\CommsServiceReference\Reference.cs">
+    <Compile Include="Connected Services\SVRf\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -85,8 +85,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\CommsServiceReference\CommsService.wsdl" />
-    <None Include="Connected Services\CommsServiceReference\item.xsd">
+    <None Include="Connected Services\SVRf\CommsService.wsdl" />
+    <None Include="Connected Services\SVRf\item.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -106,16 +106,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\CommsServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\SVRf\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CommsServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\SVRf\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CommsServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\SVRf\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CommsServiceReference\Reference.svcmap">
+    <None Include="Connected Services\SVRf\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

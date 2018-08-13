@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace server
+namespace ServiceAssembly
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ICommsService" in both code and config file together.
     [ServiceContract (SessionMode = SessionMode.Required, 
