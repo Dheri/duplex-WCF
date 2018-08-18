@@ -9,7 +9,7 @@ namespace client
 {
     static class Program
     {
-        public static string clientName;
+       // public static string clientName;
         public static Login login;
         public static Form1 form1;
 
@@ -34,6 +34,11 @@ namespace client
     {
 
         public void Receive(SVC.Message msg)
+        {
+            Program.form1.UpdateMesageList(msg);
+        }
+
+        public void c(SVC.Message msg)
         {
             Program.form1.UpdateMesageList(msg);
         }

@@ -13,6 +13,12 @@ namespace ServiceAssembly
         UseSynchronizationContext = false)]
     public class CommsService : ICommsService
     {
+        private Game game;
+        public Game Game
+        {
+            set { if (game == null) game = value; }
+            get { return game; }
+        }
         Dictionary<Client, ICommsServiceDuplexCallback> clients =
              new Dictionary<Client, ICommsServiceDuplexCallback>();
         List<Client> clientList = new List<Client>();
@@ -70,20 +76,27 @@ namespace ServiceAssembly
 
         public bool Connect(Client client)
         {
+            if (game.Started)
+            {
+                return false;
+            }
+
             if (!clients.ContainsValue(CurrentCallback) && !SearchClientsByName(client.Name))
             {
                 lock (syncObj)
                 {
                     clients.Add(client, CurrentCallback);
                     clientList.Add(client);
+                    game.addClient(client);
 
                     foreach (Client key in clients.Keys)
                     {
                         ICommsServiceDuplexCallback callback = clients[key];
                         try
                         {
-                            // callback.RefreshClients(clientList);
-                            //callback.UserJoin(client);
+                            Console.WriteLine(client.Name);
+                            callback.RefreshClients(clientList);
+                            callback.UserJoin(client);
                         }
                         catch
                         {

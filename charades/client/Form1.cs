@@ -27,6 +27,7 @@ namespace client
         void InitializeXtraComponent()
         {
             textBoxes = new TextBox[10, 10];
+            lblName.Text = Program.Client.Name;
         }
 
         private TextBox createTextBox()
@@ -115,6 +116,13 @@ namespace client
         {
 
         }
+
+
         #endregion
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

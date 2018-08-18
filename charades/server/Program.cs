@@ -11,37 +11,36 @@ namespace server
 {
     static class Program
     {
+        //public static Game game;
+        public static ServerUI form1;
         public static ServiceHost serviceHost;
+        private static CommsService service;
+
+        public static CommsService Service { get => service; }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            serviceHost = new ServiceHost(typeof(CommsService));
+            service = new CommsService();
+            service.Game = new Game();
+            serviceHost = new ServiceHost(Service);
             try
             {
-
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Startup());
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 //lol, you screwed 
             }
         }
     }
 
-    
-    public class Game
-    {
-        private List<Client> clientList = new List<Client>();
-        public void addClient(Client client)
-        {
-            clientList.Add(client);
-        }
-        public List<Client> ClientList { get { return clientList; } }
 
-    }
+
 }

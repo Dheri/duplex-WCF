@@ -17,6 +17,7 @@ namespace ServiceAssembly
         [DataMember]
         public int Score { get; set; }
 
+
     }
 
     [DataContract]
@@ -31,6 +32,23 @@ namespace ServiceAssembly
         //public Dictionary<string, string> Content { get; set; }
         public string Content { get; set; }
 
+    }
+
+    public class Game
+    {
+        private List<Client> clientList = new List<Client>();
+        bool started = false;
+        public bool addClient(Client client)
+        {
+            if (!Started)
+            {
+                clientList.Add(client);
+            }
+            return !Started;
+        }
+        public List<Client> ClientList { get { return clientList; } }
+
+        public bool Started { get => started; set => started = value; }
     }
 
 
