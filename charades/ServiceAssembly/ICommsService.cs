@@ -20,6 +20,9 @@ namespace ServiceAssembly
 
         [OperationContract(IsInitiating = true)]
         bool Connect(Client c);
+
+        [OperationContract(IsOneWay = true)]
+        void PlayWord(Client c, string word);
     }
 
     public interface ICommsServiceCallback
@@ -36,5 +39,9 @@ namespace ServiceAssembly
 
         [OperationContract(IsOneWay = true)]
         void UserJoin(Client client);
+
+
+        [OperationContract(IsOneWay = true)]
+        void updateScore(string s);
     }
 }

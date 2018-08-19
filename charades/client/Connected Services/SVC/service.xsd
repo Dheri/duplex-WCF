@@ -30,31 +30,46 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PlayWord">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="c" nillable="true" type="q5:Client" />
+        <xs:element minOccurs="0" name="word" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Receive">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="msg" nillable="true" type="q5:Message" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="msg" nillable="true" type="q6:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="StartGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="clientList" nillable="true" type="q6:ArrayOfClient" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="clientList" nillable="true" type="q7:ArrayOfClient" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RefreshClients">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="clientList" nillable="true" type="q7:ArrayOfClient" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="clientList" nillable="true" type="q8:ArrayOfClient" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UserJoin">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="client" nillable="true" type="q8:Client" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="client" nillable="true" type="q9:Client" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateScore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="s" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

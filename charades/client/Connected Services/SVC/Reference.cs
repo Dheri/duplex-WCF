@@ -217,6 +217,12 @@ namespace client.SVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICommsService/Connect", ReplyAction="http://tempuri.org/ICommsService/ConnectResponse")]
         System.Threading.Tasks.Task<bool> ConnectAsync(client.SVC.Client c);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/PlayWord")]
+        void PlayWord(client.SVC.Client c, string word);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/PlayWord")]
+        System.Threading.Tasks.Task PlayWordAsync(client.SVC.Client c, string word);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -233,6 +239,9 @@ namespace client.SVC {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/UserJoin")]
         void UserJoin(client.SVC.Client client);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/updateScore")]
+        void updateScore(string s);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -285,6 +294,14 @@ namespace client.SVC {
         
         public System.Threading.Tasks.Task<bool> ConnectAsync(client.SVC.Client c) {
             return base.Channel.ConnectAsync(c);
+        }
+        
+        public void PlayWord(client.SVC.Client c, string word) {
+            base.Channel.PlayWord(c, word);
+        }
+        
+        public System.Threading.Tasks.Task PlayWordAsync(client.SVC.Client c, string word) {
+            return base.Channel.PlayWordAsync(c, word);
         }
     }
 }

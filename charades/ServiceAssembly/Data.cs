@@ -8,7 +8,7 @@ using System.ServiceModel;
 
 namespace ServiceAssembly
 {
-    
+
     [DataContract]
     public class Client
     {
@@ -18,6 +18,14 @@ namespace ServiceAssembly
         [DataMember]
         public int Score { get; set; }
 
+        public static bool operator |(Client a, Client b)
+        {
+            if (a.Name == b.Name)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 
     [DataContract]
@@ -37,7 +45,6 @@ namespace ServiceAssembly
     [DataContract]
     public class Game
     {
-        
         private List<Client> clientList = new List<Client>();
         private bool started = false;
         private Client currentTurn;

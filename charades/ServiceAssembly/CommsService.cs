@@ -22,7 +22,7 @@ namespace ServiceAssembly
         }
         Dictionary<Client, ICommsServiceCallback> clients =
              new Dictionary<Client, ICommsServiceCallback>();
-        List<Client> clientList = new List<Client>();
+
 
         object syncObj = new object();
 
@@ -37,16 +37,16 @@ namespace ServiceAssembly
         }
 
 
-        private bool SearchClientsByName(string name)
+        private Client SearchClientsByName(string name)
         {
             foreach (Client c in clients.Keys)
             {
                 if (c.Name == name)
                 {
-                    return true;
+                    return c;
                 }
             }
-            return false;
+            return null;
         }
         public void DoWork(Client c, Game g)
         {
@@ -84,12 +84,11 @@ namespace ServiceAssembly
                 return false;
             }
 
-            if (!clients.ContainsValue(CurrentCallback) && !SearchClientsByName(client.Name))
+            if (!clients.ContainsValue(CurrentCallback) && !(SearchClientsByName(client.Name) != null))
             {
                 lock (syncObj)
                 {
                     clients.Add(client, CurrentCallback);
-                    clientList.Add(client);
                     game.addClient(client);
 
                     Console.WriteLine(client.Name + " joined");
@@ -98,9 +97,9 @@ namespace ServiceAssembly
                         ICommsServiceCallback callback = clients[key];
                         try
                         {
-                          
-                         //   callback.RefreshClients(clientList);
-                          // callback.UserJoin(client);
+
+                            //   callback.RefreshClients(clientList);
+                            // callback.UserJoin(client);
                         }
                         catch
                         {
@@ -116,5 +115,34 @@ namespace ServiceAssembly
             return false;
         }
 
+        public void PlayWord(Client client, string word)
+        {
+            Console.WriteLine(client.Name + " played " + word);
+
+
+            foreach (Client key in clients.Keys)
+            {
+                ICommsServiceCallback callback = clients[key];
+                if (key | client)
+                {
+                    Console.WriteLine(key.Name + "matched");
+
+                }
+                else
+                {
+                    Console.Write("-");
+                }
+                try
+                {
+                    callback.updateScore(null);
+                }
+                catch
+                {
+                    //seriously?
+                }
+
+            }
+
+        }
     }
 }

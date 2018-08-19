@@ -124,9 +124,6 @@ namespace client
         }
 
 
-        #endregion
-
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             wordsBindingSource.Filter = wordsTableAdapter.GetData().Columns[0] + " like '%" + tbSearch.Text + "%'";
@@ -136,6 +133,10 @@ namespace client
         {
             string s = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             rtbMessages.AppendText(Program.Client.Name + " -played:" + s);
+            Program.serviceClient.PlayWord(Program.Client, s);
+
         }
+
+        #endregion
     }
 }

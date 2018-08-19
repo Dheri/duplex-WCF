@@ -26,6 +26,11 @@ namespace client
             
         }
 
+        public void updateScore(string s)
+        {
+            Console.WriteLine(s);
+        }
+
         public void UserJoin(Client client)
         {
             Program.form1.ShowUserJoin(client);
