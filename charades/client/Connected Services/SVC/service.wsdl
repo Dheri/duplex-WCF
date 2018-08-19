@@ -70,6 +70,9 @@
   <wsdl:message name="ICommsService_updateScore_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:updateScore" />
   </wsdl:message>
+  <wsdl:message name="ICommsService_playedWord_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:playedWord" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="ICommsService">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/ICommsService/DoWork" message="tns:ICommsService_DoWork_InputMessage" />
@@ -98,6 +101,9 @@
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="updateScore">
       <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/updateScore" message="tns:ICommsService_updateScore_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="playedWord">
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/playedWord" message="tns:ICommsService_playedWord_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ICommsService" type="tns:ICommsService">
@@ -157,6 +163,12 @@
     </wsdl:operation>
     <wsdl:operation name="updateScore">
       <soap12:operation soapAction="http://tempuri.org/ICommsService/updateScore" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="playedWord">
+      <soap12:operation soapAction="http://tempuri.org/ICommsService/playedWord" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

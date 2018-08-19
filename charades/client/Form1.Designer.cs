@@ -37,6 +37,8 @@
             this.tbmessageSend = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.rtbScores = new System.Windows.Forms.RichTextBox();
+            this.lblScores = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -49,8 +51,6 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.wordsTableAdapter = new client.DSWTableAdapters.wordsTableAdapter();
-            this.rtbScores = new System.Windows.Forms.RichTextBox();
-            this.lblScores = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -208,6 +208,31 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(331, 168);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
+            // rtbScores
+            // 
+            this.rtbScores.BackColor = System.Drawing.Color.Silver;
+            this.rtbScores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbScores.Location = new System.Drawing.Point(3, 38);
+            this.rtbScores.Name = "rtbScores";
+            this.rtbScores.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.rtbScores.Size = new System.Drawing.Size(300, 127);
+            this.rtbScores.TabIndex = 0;
+            this.rtbScores.Text = "";
+            // 
+            // lblScores
+            // 
+            this.lblScores.AutoSize = true;
+            this.lblScores.BackColor = System.Drawing.Color.PowderBlue;
+            this.lblScores.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblScores.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScores.ForeColor = System.Drawing.Color.Maroon;
+            this.lblScores.Location = new System.Drawing.Point(3, 9);
+            this.lblScores.Name = "lblScores";
+            this.lblScores.Size = new System.Drawing.Size(300, 26);
+            this.lblScores.TabIndex = 1;
+            this.lblScores.Text = "Scores";
+            this.lblScores.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -337,31 +362,6 @@
             // wordsTableAdapter
             // 
             this.wordsTableAdapter.ClearBeforeFill = true;
-            // 
-            // rtbScores
-            // 
-            this.rtbScores.BackColor = System.Drawing.Color.Silver;
-            this.rtbScores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbScores.Location = new System.Drawing.Point(3, 38);
-            this.rtbScores.Name = "rtbScores";
-            this.rtbScores.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtbScores.Size = new System.Drawing.Size(300, 127);
-            this.rtbScores.TabIndex = 0;
-            this.rtbScores.Text = "";
-            // 
-            // lblScores
-            // 
-            this.lblScores.AutoSize = true;
-            this.lblScores.BackColor = System.Drawing.Color.PowderBlue;
-            this.lblScores.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblScores.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScores.ForeColor = System.Drawing.Color.Maroon;
-            this.lblScores.Location = new System.Drawing.Point(3, 9);
-            this.lblScores.Name = "lblScores";
-            this.lblScores.Size = new System.Drawing.Size(300, 26);
-            this.lblScores.TabIndex = 1;
-            this.lblScores.Text = "Scores";
-            this.lblScores.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 

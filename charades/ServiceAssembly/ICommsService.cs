@@ -43,5 +43,8 @@ namespace ServiceAssembly
 
         [OperationContract(IsOneWay = true)]
         void updateScore(string s);
+
+        [OperationContract(IsOneWay = true)]
+        void playedWord(Client c, string word, bool added);
     }
 }

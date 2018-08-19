@@ -29,7 +29,7 @@ namespace client
             Program.serviceClient = new SVC.CommsServiceClient(instanceContext);
             Program.Client  = new SVC.Client();
 
-            Program.Client.Name = tbClientName.Text;
+            Program.Client.Name = tbClientName.Text.ToUpper().Trim();
             if (Program.serviceClient.Connect(Program.Client))
             {
                 //good

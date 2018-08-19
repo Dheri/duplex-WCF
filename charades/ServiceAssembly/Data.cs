@@ -17,6 +17,7 @@ namespace ServiceAssembly
 
         [DataMember]
         public int Score { get; set; }
+        public HashSet<string> PlayedWords { get => playedWords; set => playedWords = value; }
 
         public static bool operator |(Client a, Client b)
         {
@@ -25,6 +26,14 @@ namespace ServiceAssembly
                 return true;
             }
             return false;
+        }
+
+        HashSet<string> playedWords;
+
+        public Client()
+        {
+            playedWords = new HashSet<string>();
+            playedWords.Add("chalpya");
         }
     }
 

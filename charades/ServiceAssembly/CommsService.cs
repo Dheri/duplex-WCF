@@ -36,10 +36,11 @@ namespace ServiceAssembly
             }
         }
 
+        public Dictionary<Client, ICommsServiceCallback> Clients { get => clients; set => clients = value; }
 
         private Client SearchClientsByName(string name)
         {
-            foreach (Client c in clients.Keys)
+            foreach (Client c in Clients.Keys)
             {
                 if (c.Name == name)
                 {
@@ -63,7 +64,7 @@ namespace ServiceAssembly
                 try
                 {
 
-                    foreach (ICommsServiceCallback callback in clients.Values)
+                    foreach (ICommsServiceCallback callback in Clients.Values)
                     {
                         callback.Receive(message);
                         Console.Write("+");
@@ -84,17 +85,18 @@ namespace ServiceAssembly
                 return false;
             }
 
-            if (!clients.ContainsValue(CurrentCallback) && !(SearchClientsByName(client.Name) != null))
+            if (!Clients.ContainsValue(CurrentCallback) && !(SearchClientsByName(client.Name) != null))
             {
                 lock (syncObj)
                 {
-                    clients.Add(client, CurrentCallback);
+                    client.PlayedWords = new HashSet<string>();
+                    Clients.Add(client, CurrentCallback);
                     game.addClient(client);
 
                     Console.WriteLine(client.Name + " joined");
-                    foreach (Client key in clients.Keys)
+                    foreach (Client key in Clients.Keys)
                     {
-                        ICommsServiceCallback callback = clients[key];
+                        ICommsServiceCallback callback = Clients[key];
                         try
                         {
 
@@ -117,24 +119,20 @@ namespace ServiceAssembly
 
         public void PlayWord(Client client, string word)
         {
-            Console.WriteLine(client.Name + " played " + word);
 
-            SearchClientsByName(client.Name).Score += word.Length; ;
-            foreach (Client key in clients.Keys)
+            bool added = SearchClientsByName(client.Name).PlayedWords.Add(word);
+            foreach (Client key in Clients.Keys)
             {
-                ICommsServiceCallback callback = clients[key];
-                //if (key | client)
-                //{
-                //    Console.WriteLine(key.Name + "matched");
-                //    key.Score += word.Length;
-                //}
-                //else
-                //{
-                //    Console.Write("-");
-                //}
+                ICommsServiceCallback callback = Clients[key];
+
                 try
                 {
-                    callback.updateScore(getScores());
+                    callback.playedWord(key, word, added);// check if word was played
+                    if (added)
+                    {
+                        key.Score += word.Length;
+                        callback.updateScore(getScores());//update score list
+                    }
                 }
                 catch
                 {
@@ -147,7 +145,7 @@ namespace ServiceAssembly
         private string getScores()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (Client c in clients.Keys)
+            foreach (Client c in Clients.Keys)
             {
                 sb.Append(c.Name + '`' + c.Score + ';');
             }

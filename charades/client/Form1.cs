@@ -86,6 +86,20 @@ namespace client
             }
         }
 
+        internal void TellPlayedWord(string name, string word, bool added)
+        {
+            AppendFormattedText(rtbMessages, "Server: ", Color.BlueViolet, true);
+            if (added)
+            {
+                AppendFormattedText(rtbMessages, name + " played " + word, Color.DarkGreen, false);
+            }
+            else
+            {
+                AppendFormattedText(rtbMessages, name + " repeated " + word, Color.Maroon, false);
+            }
+            AppendFormattedText(rtbMessages, Environment.NewLine, Color.BlueViolet, true);
+        }
+
         private void AppendFormattedText(RichTextBox rtb, string text, Color textColour, Boolean isBold)
         {
             int start = rtb.TextLength;
@@ -158,6 +172,8 @@ namespace client
             Program.serviceClient.PlayWord(Program.Client, s);
 
         }
+
+
 
         #endregion
     }
