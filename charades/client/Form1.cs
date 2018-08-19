@@ -126,10 +126,16 @@ namespace client
 
         #endregion
 
-    
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             wordsBindingSource.Filter = wordsTableAdapter.GetData().Columns[0] + " like '%" + tbSearch.Text + "%'";
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            string s = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            rtbMessages.AppendText(Program.Client.Name + " -played:" + s);
         }
     }
 }
