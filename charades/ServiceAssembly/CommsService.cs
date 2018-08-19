@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using game;
 
 namespace ServiceAssembly
 {
@@ -19,19 +20,19 @@ namespace ServiceAssembly
             set { if (game == null) game = value; }
             get { return game; }
         }
-        Dictionary<Client, ICommsServiceDuplexCallback> clients =
-             new Dictionary<Client, ICommsServiceDuplexCallback>();
+        Dictionary<Client, ICommsServiceCallback> clients =
+             new Dictionary<Client, ICommsServiceCallback>();
         List<Client> clientList = new List<Client>();
 
         object syncObj = new object();
 
 
-        public ICommsServiceDuplexCallback CurrentCallback
+        public ICommsServiceCallback CurrentCallback
         {
             get
             {
                 return OperationContext.Current.
-                       GetCallbackChannel<ICommsServiceDuplexCallback>();
+                       GetCallbackChannel<ICommsServiceCallback>();
             }
         }
 
@@ -62,7 +63,7 @@ namespace ServiceAssembly
                 try
                 {
 
-                    foreach (ICommsServiceDuplexCallback callback in clients.Values)
+                    foreach (ICommsServiceCallback callback in clients.Values)
                     {
                         callback.Receive(message);
                     }
@@ -91,10 +92,10 @@ namespace ServiceAssembly
 
                     foreach (Client key in clients.Keys)
                     {
-                        ICommsServiceDuplexCallback callback = clients[key];
+                        ICommsServiceCallback callback = clients[key];
                         try
                         {
-                            Console.WriteLine(client.Name);
+                            Console.WriteLine(client.Name + " joined");
                             callback.RefreshClients(clientList);
                             callback.UserJoin(client);
                         }

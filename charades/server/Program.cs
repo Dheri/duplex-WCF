@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using game;
 
 namespace server
 {

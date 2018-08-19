@@ -163,6 +163,12 @@ namespace client.SVC {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/Receive")]
         void Receive(client.SVC.Message msg);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/RefreshClients")]
+        void RefreshClients(System.Collections.Generic.List<client.SVC.Client> clientList);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/UserJoin")]
+        void UserJoin(client.SVC.Client client);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

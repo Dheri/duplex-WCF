@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37801F25-03B6-4A91-B6E3-32B17079B25F}</ProjectGuid>
+    <ProjectGuid>{CE094EB7-DEBC-45C9-B0C7-0CB9AD032CBF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceAssembly</RootNamespace>
-    <AssemblyName>ServiceAssembly</AssemblyName>
+    <RootNamespace>Game</RootNamespace>
+    <AssemblyName>Game</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,17 +40,11 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommsService.cs" />
-    <Compile Include="ICommsService.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Game\game.csproj">
-      <Project>{ce094eb7-debc-45c9-b0c7-0cb9ad032cbf}</Project>
-      <Name>game</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

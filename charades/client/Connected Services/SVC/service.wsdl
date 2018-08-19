@@ -55,6 +55,12 @@
   <wsdl:message name="ICommsService_Receive_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:Receive" />
   </wsdl:message>
+  <wsdl:message name="ICommsService_RefreshClients_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:RefreshClients" />
+  </wsdl:message>
+  <wsdl:message name="ICommsService_UserJoin_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UserJoin" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="ICommsService">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/ICommsService/DoWork" message="tns:ICommsService_DoWork_InputMessage" />
@@ -68,6 +74,12 @@
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Receive">
       <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/Receive" message="tns:ICommsService_Receive_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RefreshClients">
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/RefreshClients" message="tns:ICommsService_RefreshClients_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UserJoin">
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/UserJoin" message="tns:ICommsService_UserJoin_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ICommsService" type="tns:ICommsService">
@@ -97,6 +109,18 @@
     </wsdl:operation>
     <wsdl:operation name="Receive">
       <soap12:operation soapAction="http://tempuri.org/ICommsService/Receive" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshClients">
+      <soap12:operation soapAction="http://tempuri.org/ICommsService/RefreshClients" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserJoin">
+      <soap12:operation soapAction="http://tempuri.org/ICommsService/UserJoin" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

@@ -4,8 +4,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
 
-namespace ServiceAssembly
+namespace game
 {
     
     [DataContract]
@@ -34,10 +35,13 @@ namespace ServiceAssembly
 
     }
 
+    [DataContract]
     public class Game
     {
+        
         private List<Client> clientList = new List<Client>();
-        bool started = false;
+        private bool started = false;
+        private Client currentTurn;
         public bool addClient(Client client)
         {
             if (!Started)
@@ -46,9 +50,13 @@ namespace ServiceAssembly
             }
             return !Started;
         }
+
+        [DataMember]
         public List<Client> ClientList { get { return clientList; } }
 
+        [DataMember]
         public bool Started { get => started; set => started = value; }
+        public Client CurrentTurn { get => currentTurn; set => currentTurn = value; }
     }
 
 

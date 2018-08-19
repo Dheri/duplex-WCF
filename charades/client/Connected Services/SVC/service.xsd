@@ -36,4 +36,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RefreshClients">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="clientList" nillable="true" type="q5:ArrayOfClient" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserJoin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ServiceAssembly" minOccurs="0" name="client" nillable="true" type="q6:Client" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

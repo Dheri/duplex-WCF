@@ -12,12 +12,11 @@ namespace client
        // public static string clientName;
         public static Login login;
         public static Form1 form1;
+        public static object game;
 
 
         public static SVC.CommsServiceClient serviceClient;
         public static SVC.Client Client;
-
-
 
 
         [STAThread]
@@ -38,11 +37,14 @@ namespace client
             Program.form1.UpdateMesageList(msg);
         }
 
-        public void c(SVC.Message msg)
+        public void RefreshClients(List<Client> clientList)
         {
-            Program.form1.UpdateMesageList(msg);
+            throw new NotImplementedException();
         }
 
-
+        public void UserJoin(Client client)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
