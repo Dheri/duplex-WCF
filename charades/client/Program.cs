@@ -12,7 +12,7 @@ namespace client
        // public static string clientName;
         public static Login login;
         public static Form1 form1;
-        public static object game;
+        public static SVC.Game game;
 
 
         public static SVC.CommsServiceClient serviceClient;
@@ -29,22 +29,5 @@ namespace client
         }
 
     }
-    public class CallBackImlementation : SVC.ICommsServiceCallback
-    {
 
-        public void Receive(SVC.Message msg)
-        {
-            Program.form1.UpdateMesageList(msg);
-        }
-
-        public void RefreshClients(List<Client> clientList)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UserJoin(Client client)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

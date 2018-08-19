@@ -18,7 +18,6 @@ namespace client
         //SVC.Client client;
         //SVC.Message message = new SVC.Message();
 
-        InstanceContext instanceContext;
         TextBox[,] textBoxes;
 
         #region MyMethods
@@ -39,6 +38,7 @@ namespace client
                 Anchor = AnchorStyles.Top,
                 Dock = DockStyle.Fill,
             };
+
             tb.Anchor = AnchorStyles.Right;
             tb.Anchor = AnchorStyles.Bottom;
             tb.Anchor = AnchorStyles.Left;
@@ -56,8 +56,20 @@ namespace client
 
         public void UpdateMesageList(SVC.Message m)
         {
-            rtbMessages.Text = rtbMessages.Text + Environment.NewLine + " a";
-            rtbMessages.Text = rtbMessages.Text + Environment.NewLine + m.Sender + ": " + m.Content;
+            int len = rtbMessages.TextLength;
+            rtbMessages.AppendText(m.Sender + ": " + m.Content + Environment.NewLine);
+
+            Console.WriteLine(rtbMessages.TextLength);
+            rtbMessages.Select(len, m.Sender.Length + 1);
+            rtbMessages.SelectionFont = new Font(rtbMessages.Font, FontStyle.Bold);
+
+            //  rtbMessages.SelectionStart = rtbMessages.TextLength;
+            rtbMessages.ScrollToCaret();
+        }
+
+        public void ShowUserJoin(SVC.Client c)
+        {
+            rtbMessages.AppendText(rtbMessages.Text + c.Name + " joined " + Environment.NewLine);
         }
 
         #endregion
@@ -73,6 +85,9 @@ namespace client
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'wordDS.words' table. You can move, or remove it, as needed.
+            this.wordsTableAdapter.Fill(this.wordDS.words);
+
             for (int i = 0; i < textBoxes.GetLength(0); i++)
             {
                 for (int j = 0; j < textBoxes.GetLength(1); j++)
@@ -84,11 +99,6 @@ namespace client
 
 
         #region UI_Events
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void scribleGrid_Paint(object sender, PaintEventArgs e)
         {
@@ -112,15 +122,14 @@ namespace client
         }
 
 
-        private void rtbMessages_TextChanged(object sender, EventArgs e)
+        #endregion
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-
-        #endregion
-
-        private void label1_Click(object sender, EventArgs e)
+        private void tbmessageSend_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -66,12 +66,14 @@ namespace ServiceAssembly
                     foreach (ICommsServiceCallback callback in clients.Values)
                     {
                         callback.Receive(message);
+                        Console.Write("+");
                     }
                 }
                 catch (Exception e)
                 {
                     //lol
                 }
+                Console.WriteLine(".");
             }
         }
 
@@ -90,14 +92,15 @@ namespace ServiceAssembly
                     clientList.Add(client);
                     game.addClient(client);
 
+                    Console.WriteLine(client.Name + " joined");
                     foreach (Client key in clients.Keys)
                     {
                         ICommsServiceCallback callback = clients[key];
                         try
                         {
-                            Console.WriteLine(client.Name + " joined");
-                            callback.RefreshClients(clientList);
-                            callback.UserJoin(client);
+                          
+                         //   callback.RefreshClients(clientList);
+                          // callback.UserJoin(client);
                         }
                         catch
                         {

@@ -27,6 +27,10 @@ namespace ServiceAssembly
         [OperationContract(IsOneWay = true)]
         void Receive( Message msg);
 
+
+        [OperationContract(IsOneWay = true)]
+        void StartGame(List<Client> clientList);
+
         [OperationContract(IsOneWay = true)]
         void RefreshClients(List<Client> clientList);
 

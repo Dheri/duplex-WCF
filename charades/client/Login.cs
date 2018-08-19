@@ -34,6 +34,7 @@ namespace client
             {
                 //good
                 Console.WriteLine("Connected");
+                Program.game = new SVC.Game();
                 Program.form1 = new Form1();
                 this.Hide();
                 Program.form1.Show();

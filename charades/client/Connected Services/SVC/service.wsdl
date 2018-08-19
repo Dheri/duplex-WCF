@@ -55,6 +55,9 @@
   <wsdl:message name="ICommsService_Receive_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:Receive" />
   </wsdl:message>
+  <wsdl:message name="ICommsService_StartGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
   <wsdl:message name="ICommsService_RefreshClients_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:RefreshClients" />
   </wsdl:message>
@@ -74,6 +77,9 @@
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Receive">
       <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/Receive" message="tns:ICommsService_Receive_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="StartGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/StartGame" message="tns:ICommsService_StartGame_OutputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RefreshClients">
       <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/RefreshClients" message="tns:ICommsService_RefreshClients_OutputCallbackMessage" />
@@ -109,6 +115,12 @@
     </wsdl:operation>
     <wsdl:operation name="Receive">
       <soap12:operation soapAction="http://tempuri.org/ICommsService/Receive" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/ICommsService/StartGame" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
