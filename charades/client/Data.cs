@@ -23,12 +23,15 @@ namespace client
 
         public void StartGame(List<Client> clientList)
         {
-            
+
         }
 
         public void updateScore(string s)
         {
             Console.WriteLine(s);
+            Program.form1.updateScoreRTB(s);
+           
+            
         }
 
         public void UserJoin(Client client)

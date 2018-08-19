@@ -49,11 +49,14 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.wordsTableAdapter = new client.DSWTableAdapters.wordsTableAdapter();
+            this.rtbScores = new System.Windows.Forms.RichTextBox();
+            this.lblScores = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -91,7 +94,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(776, 426);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // scribleGrid
             // 
@@ -133,7 +135,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.rtbMessages);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -189,18 +190,21 @@
             this.lblName.Size = new System.Drawing.Size(331, 26);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "Name";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.rtbScores, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblScores, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(442, 255);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.14286F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.83333F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.16666F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(331, 168);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
@@ -320,10 +324,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Location = new System.Drawing.Point(0, 0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(84, 25);
+            this.btnSearch.Size = new System.Drawing.Size(158, 25);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -332,6 +337,31 @@
             // wordsTableAdapter
             // 
             this.wordsTableAdapter.ClearBeforeFill = true;
+            // 
+            // rtbScores
+            // 
+            this.rtbScores.BackColor = System.Drawing.Color.Silver;
+            this.rtbScores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbScores.Location = new System.Drawing.Point(3, 38);
+            this.rtbScores.Name = "rtbScores";
+            this.rtbScores.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.rtbScores.Size = new System.Drawing.Size(300, 127);
+            this.rtbScores.TabIndex = 0;
+            this.rtbScores.Text = "";
+            // 
+            // lblScores
+            // 
+            this.lblScores.AutoSize = true;
+            this.lblScores.BackColor = System.Drawing.Color.PowderBlue;
+            this.lblScores.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblScores.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScores.ForeColor = System.Drawing.Color.Maroon;
+            this.lblScores.Location = new System.Drawing.Point(3, 9);
+            this.lblScores.Name = "lblScores";
+            this.lblScores.Size = new System.Drawing.Size(300, 26);
+            this.lblScores.TabIndex = 1;
+            this.lblScores.Text = "Scores";
+            this.lblScores.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -349,6 +379,8 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -394,6 +426,8 @@
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Button btnPlay;
+        private System.Windows.Forms.RichTextBox rtbScores;
+        private System.Windows.Forms.Label lblScores;
     }
 }
 

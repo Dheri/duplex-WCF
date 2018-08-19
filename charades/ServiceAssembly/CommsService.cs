@@ -119,22 +119,22 @@ namespace ServiceAssembly
         {
             Console.WriteLine(client.Name + " played " + word);
 
-
+            SearchClientsByName(client.Name).Score += word.Length; ;
             foreach (Client key in clients.Keys)
             {
                 ICommsServiceCallback callback = clients[key];
-                if (key | client)
-                {
-                    Console.WriteLine(key.Name + "matched");
-
-                }
-                else
-                {
-                    Console.Write("-");
-                }
+                //if (key | client)
+                //{
+                //    Console.WriteLine(key.Name + "matched");
+                //    key.Score += word.Length;
+                //}
+                //else
+                //{
+                //    Console.Write("-");
+                //}
                 try
                 {
-                    callback.updateScore(null);
+                    callback.updateScore(getScores());
                 }
                 catch
                 {
@@ -143,6 +143,15 @@ namespace ServiceAssembly
 
             }
 
+        }
+        private string getScores()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Client c in clients.Keys)
+            {
+                sb.Append(c.Name + '`' + c.Score + ';');
+            }
+            return sb.ToString();
         }
     }
 }

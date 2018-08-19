@@ -63,6 +63,7 @@ namespace client
             Console.WriteLine(rtbMessages.TextLength);
             rtbMessages.Select(len, m.Sender.Length + 1);
             rtbMessages.SelectionFont = new Font(rtbMessages.Font, FontStyle.Bold);
+            rtbMessages.SelectionColor = Color.BlueViolet;
 
             //  rtbMessages.SelectionStart = rtbMessages.TextLength;
             rtbMessages.ScrollToCaret();
@@ -70,7 +71,41 @@ namespace client
 
         public void ShowUserJoin(SVC.Client c)
         {
-            rtbMessages.AppendText(rtbMessages.Text + c.Name + " joined " + Environment.NewLine);
+            rtbMessages.AppendText(Environment.NewLine + rtbMessages.Text + c.Name + " \\bjoined\\b0 " + Environment.NewLine);
+        }
+
+        internal void updateScoreRTB(string s)
+        {
+            rtbScores.Text = "";
+            String[] scores = s.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string score in scores)
+            {
+                string[] pair = score.Split(new string[] { "`" }, StringSplitOptions.RemoveEmptyEntries);
+                AppendFormattedText(rtbScores, pair[0] + "\t", Color.LightSeaGreen, true);
+                AppendFormattedText(rtbScores, pair[1] + Environment.NewLine, Color.RosyBrown, false);
+            }
+        }
+
+        private void AppendFormattedText(RichTextBox rtb, string text, Color textColour, Boolean isBold)
+        {
+            int start = rtb.TextLength;
+            rtb.AppendText(text);
+            int end = rtb.TextLength; // now longer by length of appended text
+
+            // Select text that was appended
+            rtb.Select(start, end - start);
+
+
+            rtb.SelectionColor = textColour;
+            rtb.SelectionFont = new Font(
+                 rtb.SelectionFont.FontFamily,
+                 rtb.SelectionFont.Size,
+                 (isBold ? FontStyle.Bold : FontStyle.Regular));
+
+
+            // Unselect text
+            rtbMessages.ScrollToCaret();
+            rtb.SelectionLength = 0;
         }
 
         #endregion
@@ -102,20 +137,8 @@ namespace client
 
         #region UI_Events
 
-        private void scribleGrid_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void btnSendMsg_Click(object sender, EventArgs e)
         {
@@ -132,7 +155,6 @@ namespace client
         private void btnPlay_Click(object sender, EventArgs e)
         {
             string s = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            rtbMessages.AppendText(Program.Client.Name + " -played:" + s);
             Program.serviceClient.PlayWord(Program.Client, s);
 
         }
