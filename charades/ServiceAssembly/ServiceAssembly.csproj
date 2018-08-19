@@ -43,14 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommsService.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="ICommsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Game\game.csproj">
-      <Project>{ce094eb7-debc-45c9-b0c7-0cb9ad032cbf}</Project>
-      <Name>game</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

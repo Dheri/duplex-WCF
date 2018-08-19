@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using game;
+
 
 namespace ServiceAssembly
 {
@@ -48,7 +48,7 @@ namespace ServiceAssembly
             }
             return false;
         }
-        public void DoWork(Client c)
+        public void DoWork(Client c, Game g)
         {
             c.Name = "Parteek";
         }

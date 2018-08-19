@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 
-namespace game
+namespace ServiceAssembly
 {
     
     [DataContract]
@@ -17,7 +17,6 @@ namespace game
 
         [DataMember]
         public int Score { get; set; }
-
 
     }
 

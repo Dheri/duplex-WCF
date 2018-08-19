@@ -91,10 +91,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Game\game.csproj">
-      <Project>{ce094eb7-debc-45c9-b0c7-0cb9ad032cbf}</Project>
-      <Name>game</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ServiceAssembly\ServiceAssembly.csproj">
       <Project>{37801f25-03b6-4a91-b6e3-32b17079b25f}</Project>
       <Name>ServiceAssembly</Name>

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using game;
 
 namespace ServiceAssembly
 {
@@ -14,7 +13,7 @@ namespace ServiceAssembly
     public interface ICommsService
     {
         [OperationContract(IsOneWay = true)]
-        void DoWork( Client c);
+        void DoWork( Client c, Game g);
 
         [OperationContract(IsOneWay = true)]
         void Send(Message msg);
