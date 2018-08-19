@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using client.SVC;
+using System.Data.SqlClient;
 
 namespace client
 {
@@ -85,8 +86,9 @@ namespace client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'wordDS.words' table. You can move, or remove it, as needed.
-            this.wordsTableAdapter.Fill(this.wordDS.words);
+            // TODO: This line of code loads data into the 'dSW.words' table. You can move, or remove it, as needed.
+            this.wordsTableAdapter.Fill(this.dSW.words);
+
 
             for (int i = 0; i < textBoxes.GetLength(0); i++)
             {
@@ -124,14 +126,10 @@ namespace client
 
         #endregion
 
-        private void label1_Click(object sender, EventArgs e)
+    
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void tbmessageSend_TextChanged(object sender, EventArgs e)
-        {
-
+            wordsBindingSource.Filter = wordsTableAdapter.GetData().Columns[0] + " like '%" + tbSearch.Text + "%'";
         }
     }
 }

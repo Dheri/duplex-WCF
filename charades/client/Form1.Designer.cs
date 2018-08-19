@@ -37,20 +37,37 @@
             this.tbmessageSend = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.wordsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wordDS = new client.wordDS();
-            this.wordsTableAdapter = new client.wordDSTableAdapters.wordsTableAdapter();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.wordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wordsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSWBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSW = new client.DSW();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.wordsTableAdapter = new client.DSWTableAdapters.wordsTableAdapter();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.wordsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wordDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wordsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSWBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSW)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -62,6 +79,7 @@
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.splitContainer2, 0, 2);
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -156,7 +174,6 @@
             this.tbmessageSend.Name = "tbmessageSend";
             this.tbmessageSend.Size = new System.Drawing.Size(229, 23);
             this.tbmessageSend.TabIndex = 0;
-            this.tbmessageSend.TextChanged += new System.EventHandler(this.tbmessageSend_TextChanged);
             // 
             // lblName
             // 
@@ -170,36 +187,38 @@
             this.lblName.Size = new System.Drawing.Size(331, 26);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "Name";
-            this.lblName.Click += new System.EventHandler(this.label1_Click);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(442, 255);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 21.73913F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.26087F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.14286F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.85714F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(331, 168);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
-            // wordsBindingSource
+            // splitContainer2
             // 
-            this.wordsBindingSource.DataMember = "words";
-            this.wordsBindingSource.DataSource = this.wordDS;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 255);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // wordDS
+            // splitContainer2.Panel1
             // 
-            this.wordDS.DataSetName = "wordDS";
-            this.wordDS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer4);
             // 
-            // wordsTableAdapter
+            // splitContainer2.Panel2
             // 
-            this.wordsTableAdapter.ClearBeforeFill = true;
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Size = new System.Drawing.Size(433, 168);
+            this.splitContainer2.SplitterDistance = 139;
+            this.splitContainer2.TabIndex = 6;
             // 
             // dataGridView1
             // 
@@ -208,22 +227,90 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.wordDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn1});
             this.dataGridView1.DataSource = this.wordsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 39);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(159, 126);
+            this.dataGridView1.Size = new System.Drawing.Size(271, 139);
             this.dataGridView1.TabIndex = 5;
             // 
-            // wordDataGridViewTextBoxColumn
+            // wordsBindingSource
             // 
-            this.wordDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.wordDataGridViewTextBoxColumn.DataPropertyName = "word";
-            this.wordDataGridViewTextBoxColumn.HeaderText = "word";
-            this.wordDataGridViewTextBoxColumn.Name = "wordDataGridViewTextBoxColumn";
-            this.wordDataGridViewTextBoxColumn.ReadOnly = true;
-            this.wordDataGridViewTextBoxColumn.Width = 63;
+            this.wordsBindingSource.DataMember = "words";
+            this.wordsBindingSource.DataSource = this.dSWBindingSource;
+            // 
+            // dSWBindingSource
+            // 
+            this.dSWBindingSource.DataSource = this.dSW;
+            this.dSWBindingSource.Position = 0;
+            // 
+            // dSW
+            // 
+            this.dSW.DataSetName = "DSW";
+            this.dSW.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.tbSearch);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.button1);
+            this.splitContainer3.Size = new System.Drawing.Size(433, 25);
+            this.splitContainer3.SplitterDistance = 271;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbSearch.Location = new System.Drawing.Point(0, 0);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(271, 23);
+            this.tbSearch.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 25);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // wordsTableAdapter
+            // 
+            this.wordsTableAdapter.ClearBeforeFill = true;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer4.Size = new System.Drawing.Size(433, 139);
+            this.splitContainer4.SplitterDistance = 271;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "word";
+            this.dataGridViewTextBoxColumn1.HeaderText = "word";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // Form1
             // 
@@ -241,10 +328,22 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.wordsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wordDS)).EndInit();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wordsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSWBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSW)).EndInit();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel1.PerformLayout();
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -259,11 +358,19 @@
         private System.Windows.Forms.TextBox tbmessageSend;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private wordDS wordDS;
-        private System.Windows.Forms.BindingSource wordsBindingSource;
-        private wordDSTableAdapters.wordsTableAdapter wordsTableAdapter;
+ //       private wordDSTableAdapters.wordsTableAdapter wordsTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn wordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.BindingSource dSWBindingSource;
+        private DSW dSW;
+        private System.Windows.Forms.BindingSource wordsBindingSource;
+        private DSWTableAdapters.wordsTableAdapter wordsTableAdapter;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
 
