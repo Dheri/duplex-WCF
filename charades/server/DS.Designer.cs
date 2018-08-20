@@ -3701,11 +3701,10 @@ namespace server.DSTableAdapters {
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "UPDATE       games\r\nSET                winner = @winner\r\nWHERE        (id = @Orig" +
-                "inal_id); \r\nSELECT id, dateTime, winner FROM games WHERE (id = @id)";
+                "inal_id); \r\nSELECT id, dateTime, winner FROM games WHERE (id = @Original_id)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@winner", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "winner", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3903,7 +3902,7 @@ namespace server.DSTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateWinnerQuery(string winner, int Original_id, int id) {
+        public virtual int UpdateWinnerQuery(string winner, int Original_id) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((winner == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -3912,7 +3911,6 @@ namespace server.DSTableAdapters {
                 command.Parameters[0].Value = ((string)(winner));
             }
             command.Parameters[1].Value = ((int)(Original_id));
-            command.Parameters[2].Value = ((int)(id));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

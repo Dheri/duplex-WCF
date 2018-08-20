@@ -47,6 +47,10 @@ namespace server
                 }
             }
 
+            //update game winner
+            taGame.UpdateWinnerQuery(winner, gameid);
+
+            //stop all clients
             Program.Service.stopServer();
 
             Console.WriteLine("Server Closed");
