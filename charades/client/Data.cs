@@ -10,6 +10,12 @@ namespace client
 
     public class CallBackImlementation : SVC.ICommsServiceCallback
     {
+        public void LogOut()
+        {
+
+            Program.form1.LogOut();
+        }
+
         public void playedWord(Client c, string word, bool added)
         {
             Program.form1.TellPlayedWord(c.Name, word, added);

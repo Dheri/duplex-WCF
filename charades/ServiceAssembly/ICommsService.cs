@@ -46,5 +46,8 @@ namespace ServiceAssembly
 
         [OperationContract(IsOneWay = true)]
         void playedWord(Client c, string word, bool added);
+
+        [OperationContract(IsTerminating = true)]
+        void LogOut();
     }
 }

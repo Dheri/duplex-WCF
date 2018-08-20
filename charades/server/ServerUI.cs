@@ -28,18 +28,34 @@ namespace server
             tagameLog = new DSTableAdapters.gamelogsTableAdapter();
             tagameresults = new DSTableAdapters.gameresultsTableAdapter();
 
-
+            int highScore = 0;
+            string winner = "";
+            string scoreBoard = Program.Service.getScores();
             foreach (Client c in Program.Service.Clients.Keys)
             {
-                taClient.Insert(c.Name.ToUpper().Trim());
+                taClient.InsertClientProc(c.Name.Trim().ToUpper());
                 tagameresults.InsertGameResultsQuery(gameid, c.Name.ToUpper(), c.Score);
+
+                if (c.Score > highScore)
+                {
+                    winner = c.Name;
+                }
+
                 foreach (string word in c.PlayedWords)
                 {
                     tagameLog.InsertWordLogQuery(gameid, word.ToUpper(), c.Name.ToUpper());
                 }
             }
 
+            Program.Service.stopServer();
+
             Console.WriteLine("Server Closed");
+            btnStop.Enabled = false;
+
+            Results rForm = new Results(winner, highScore, scoreBoard);
+            this.Hide();
+            rForm.Show();
+
         }
 
         private void ServerUI_Load(object sender, EventArgs e)
@@ -51,7 +67,7 @@ namespace server
             gameid = (int)taGame.InsertNewGameQuery(DateTime.Now, "STUB");
             Console.WriteLine("gid " + gameid);
             lblGameId.Text = "Game ID:   " + gameid;
-
+            this.Text = "Server [Game#: " + gameid + "]";
         }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblSvStatus = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblSvStatus = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.lblGameId = new System.Windows.Forms.Label();
             this.ds1 = new server.DS();
@@ -63,18 +63,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // lblSvStatus
-            // 
-            this.lblSvStatus.AutoSize = true;
-            this.lblSvStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSvStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSvStatus.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblSvStatus.Location = new System.Drawing.Point(0, 0);
-            this.lblSvStatus.Name = "lblSvStatus";
-            this.lblSvStatus.Size = new System.Drawing.Size(216, 31);
-            this.lblSvStatus.TabIndex = 0;
-            this.lblSvStatus.Text = "Server Running";
-            // 
             // btnStop
             // 
             this.btnStop.AutoSize = true;
@@ -103,6 +91,18 @@
             this.splitContainer1.Size = new System.Drawing.Size(524, 181);
             this.splitContainer1.SplitterDistance = 62;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // lblSvStatus
+            // 
+            this.lblSvStatus.AutoSize = true;
+            this.lblSvStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSvStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSvStatus.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblSvStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblSvStatus.Name = "lblSvStatus";
+            this.lblSvStatus.Size = new System.Drawing.Size(216, 31);
+            this.lblSvStatus.TabIndex = 0;
+            this.lblSvStatus.Text = "Server Running";
             // 
             // splitContainer2
             // 

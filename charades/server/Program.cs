@@ -27,6 +27,7 @@ namespace server
             service = new CommsService();
             service.Game = new Game();
             serviceHost = new ServiceHost(Service);
+            
             try
             {
                 Application.EnableVisualStyles();

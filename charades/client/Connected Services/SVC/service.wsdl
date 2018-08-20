@@ -73,6 +73,12 @@
   <wsdl:message name="ICommsService_playedWord_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:playedWord" />
   </wsdl:message>
+  <wsdl:message name="ICommsService_LogOut_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:LogOut" />
+  </wsdl:message>
+  <wsdl:message name="ICommsService_LogOut_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:LogOutResponse" />
+  </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="ICommsService">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/ICommsService/DoWork" message="tns:ICommsService_DoWork_InputMessage" />
@@ -104,6 +110,10 @@
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="playedWord">
       <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/playedWord" message="tns:ICommsService_playedWord_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="true" name="LogOut">
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommsService/LogOut" message="tns:ICommsService_LogOut_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommsService/LogOutResponse" message="tns:ICommsService_LogOut_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ICommsService" type="tns:ICommsService">
@@ -169,6 +179,15 @@
     </wsdl:operation>
     <wsdl:operation name="playedWord">
       <soap12:operation soapAction="http://tempuri.org/ICommsService/playedWord" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap12:operation soapAction="http://tempuri.org/ICommsService/LogOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

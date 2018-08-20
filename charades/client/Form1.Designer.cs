@@ -312,7 +312,7 @@
             // 
             this.btnPlay.BackColor = System.Drawing.Color.PeachPuff;
             this.btnPlay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPlay.Font = new System.Drawing.Font("Lucida Calligraphy", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlay.Font = new System.Drawing.Font("Lucida Calligraphy", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.ForeColor = System.Drawing.Color.Blue;
             this.btnPlay.Location = new System.Drawing.Point(0, 0);
             this.btnPlay.Name = "btnPlay";

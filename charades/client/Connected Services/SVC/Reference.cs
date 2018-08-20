@@ -245,6 +245,9 @@ namespace client.SVC {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICommsService/playedWord")]
         void playedWord(client.SVC.Client c, string word, bool added);
+        
+        [System.ServiceModel.OperationContractAttribute(IsTerminating=true, Action="http://tempuri.org/ICommsService/LogOut", ReplyAction="http://tempuri.org/ICommsService/LogOutResponse")]
+        void LogOut();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

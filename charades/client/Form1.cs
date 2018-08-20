@@ -81,8 +81,8 @@ namespace client
             foreach (string score in scores)
             {
                 string[] pair = score.Split(new string[] { "`" }, StringSplitOptions.RemoveEmptyEntries);
-                AppendFormattedText(rtbScores, pair[0] + "\t", Color.LightSeaGreen, true);
-                AppendFormattedText(rtbScores, pair[1] + Environment.NewLine, Color.RosyBrown, false);
+                AppendFormattedText(rtbScores, pair[0] + " \t", Color.DarkBlue, true);
+                AppendFormattedText(rtbScores, pair[1] + Environment.NewLine, Color.Firebrick, false);
             }
         }
 
@@ -116,12 +116,31 @@ namespace client
                  rtb.SelectionFont.Size,
                  (isBold ? FontStyle.Bold : FontStyle.Regular));
 
+            rtb.ScrollToCaret();
 
             // Unselect text
-            rtbMessages.ScrollToCaret();
             rtb.SelectionLength = 0;
         }
 
+
+        public void DisableControls(Control con)
+        {
+
+            foreach (Control c in con.Controls)
+            {
+                DisableControls(c);
+            }
+            con.Enabled = false;
+        }
+
+        private void EnableControls(Control con)
+        {
+            if (con != null)
+            {
+                con.Enabled = true;
+                EnableControls(con.Parent);
+            }
+        }
         #endregion
 
 
@@ -138,6 +157,7 @@ namespace client
             // TODO: This line of code loads data into the 'dSW.words' table. You can move, or remove it, as needed.
             this.wordsTableAdapter.Fill(this.dSW.words);
 
+            this.Text = "Client UI [" + Program.Client.Name + "]";
 
             for (int i = 0; i < textBoxes.GetLength(0); i++)
             {
@@ -173,6 +193,24 @@ namespace client
 
         }
 
+        internal void LogOut()
+        {
+            AppendFormattedText(rtbMessages, Environment.NewLine + Environment.NewLine + "Server: ", Color.BlueViolet, true);
+            AppendFormattedText(rtbMessages, " Go HOME ", Color.DarkMagenta, true);
+            DisableControls(this);
+            EnableControls(btnPlay);
+            btnPlay.Text = "EXIT";
+
+
+            btnPlay.Click += new System.EventHandler(btnPlay_Close);
+            btnPlay.Click -= btnPlay_Click;
+        }
+
+        private void btnPlay_Close(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
+        }
 
 
         #endregion

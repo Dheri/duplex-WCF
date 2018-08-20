@@ -33,7 +33,7 @@ namespace client
             if (Program.serviceClient.Connect(Program.Client))
             {
                 //good
-                Console.WriteLine("Connected");
+                Console.WriteLine(Program.Client.Name + " Connected");
                 Program.game = new SVC.Game();
                 Program.form1 = new Form1();
                 this.Hide();

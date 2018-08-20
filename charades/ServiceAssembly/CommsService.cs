@@ -121,28 +121,31 @@ namespace ServiceAssembly
         {
 
             bool added = SearchClientsByName(client.Name).PlayedWords.Add(word);
+            if (added)
+            {
+                SearchClientsByName(client.Name).Score += word.Length;
+            }
             foreach (Client key in Clients.Keys)
             {
                 ICommsServiceCallback callback = Clients[key];
 
                 try
                 {
-                    callback.playedWord(key, word, added);// check if word was played
+                    callback.playedWord(client, word, added);//update chat tb
                     if (added)
                     {
-                        key.Score += word.Length;
                         callback.updateScore(getScores());//update score list
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-                    //seriously?
+                    Console.WriteLine(e.Message);
                 }
 
             }
 
         }
-        private string getScores()
+        public string getScores()
         {
             StringBuilder sb = new StringBuilder();
             foreach (Client c in Clients.Keys)
@@ -150,6 +153,24 @@ namespace ServiceAssembly
                 sb.Append(c.Name + '`' + c.Score + ';');
             }
             return sb.ToString();
+        }
+
+        public void stopServer()
+        {
+            foreach (Client key in Clients.Keys)
+            {
+                ICommsServiceCallback callback = Clients[key];
+
+                try
+                {
+                    callback.LogOut();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            }
         }
     }
 }
